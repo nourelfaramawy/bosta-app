@@ -14,8 +14,6 @@
 .bosta__header .bosta__logo {
     display: flex;
     align-items: center;
-    /* Align image and text vertically */
-    /* font-family: 'Cairo', sans-serif; */
     font-size: 24px;
     font-weight: bold;
     color: red;
@@ -23,10 +21,8 @@
 
 .bosta__header .bosta__logo--image {
     width: 40px;
-    /* Adjust size as needed */
     height: 40px;
     margin-left: 10px;
-    /* Space between the image and text */
 }
 
 

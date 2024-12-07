@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Bosta from './components/Bosta';
 import Order from './components/Order';
-import Loader from './components/Loader';
 import SearchShipment from './components/SearchShipment';
 
 /**
@@ -42,7 +41,6 @@ function App() {
 
   return (
     <div className="App">
-    {/* <Loader /> */}
      <Bosta />
      <SearchShipment onSubmit={setTrackingNumber} />
       {trackingNumber && <Order trackingNumber={trackingNumber} />}

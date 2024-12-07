@@ -62,53 +62,6 @@ const formatDate = (dateString: string) => {
 };
 
   return (
-    // <div className="shipment-container">
-    //   <div className="delivery-address">
-    //     <p className="address-title">عنوان التسليم</p>
-    //     <p className="address-details">
-    //       إمبابة شارع طلعت حرب مدينة العمال بجوار البرنس منزل 17 بلوك 22, Cairo
-    //     </p>
-    //     <div className="report-issue">
-    //       <p>هل يوجد مشكلة في شحنتك؟!</p>
-    //       <button className="report-button">إبلاغ عن مشكلة</button>
-    //     </div>
-    //   </div>
-
-    //   <div className="shipment-details">
-    //     <p className="details-title">تفاصيل الشحنة</p>
-    //     <table className="shipment-table">
-    //       <thead>
-    //         <tr>
-    //           <th>الفرع</th>
-    //           <th>التاريخ</th>
-    //           <th>الوقت</th>
-    //           <th>تفاصيل</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         {steps.map((step) => (
-    //           <tr key={step.index}>
-    //             <td>مدينة نصر</td>
-    //             <td>
-    //               {step.index === 0 && orderData
-    //                 ? formatDate(orderData.CreateDate).date
-    //                 : '05/04/2020'}
-    //             </td>
-    //             <td className="time-column">
-    //               {step.index === 0 && orderData
-    //                 ? formatDate(orderData.CreateDate).time.toLocaleLowerCase()
-    //                 : '12:30 pm'}
-    //             </td>
-    //             <td>{step.desc} {isCancelled && currentStep === step.index && (
-    //                 <span className="shipment-cancelled-text">تم إلغاء الشحنة</span>
-    //               )}</td>
-                
-    //           </tr>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //   </div>
-    // </div>
     <div className="shipment-container">
       <div className="delivery-address">
         <p className="address-title">{STATIC_STRINGS.deliveryAddressTitle}</p>

@@ -16,7 +16,6 @@
     position: relative;
     direction: rtl;
     
-    /* transform: scaleX(-1); */
 }
 
 .progress_container::before{
@@ -33,14 +32,12 @@
 }
 
 .progress{
-    /* background-color: green; */
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
     height: 4px;
     right: 0;
-    /* width: 60%; */
     z-index: 1;
     transition: all 0.8s ease-in;
     
