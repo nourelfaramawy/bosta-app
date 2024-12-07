@@ -56,12 +56,6 @@ const Timeline:React.FC<TimelineProps> = ({ currentStep, isCancelled }) => {
       </div>
       <div className="steps">
         {steps.map((step, index) => (
-          // <span
-          //   key={index}
-          //   className={index <= currentStep ? 'active-step' : ''}
-          // >
-          //   {step}
-          // </span>
           <div
             key={index}
             className={`step-container ${
@@ -71,7 +65,6 @@ const Timeline:React.FC<TimelineProps> = ({ currentStep, isCancelled }) => {
             <span className={index <= currentStep ? 'active-step' : ''}>
               {step}
             </span>
-            {/* Add extra text if cancelled */}
             {isCancelled && index === currentStep && (
               <span className="cancelled-text">تم إلغاء الشحنة</span>
             )}

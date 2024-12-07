@@ -4,6 +4,7 @@ import Loader from './Loader'
 import './OrderStyles.css'
 import ShipmentDetails from './ShipmentDetails'
 import axios from 'axios';
+import { STATIC_STRINGS } from './OrderStrings';
 
 /**
  * 
@@ -20,7 +21,10 @@ import axios from 'axios';
  * Timeline: Displays a progress timeline for the shipment's delivery steps.
  * ShipmentDetails: Shows additional details about the shipment.
  * Loader: Displays a loading spinner during data fetch operations.
- * OrderStyles.css: Contains styles for the component
+ * OrderStyles.css: Contains styles for the component.
+ * STATIC_STRINGS: Constains all the static strings in the Order component that enables for easy and quick
+ * changes.
+ * 
  * 
  * @props
  * - trackingNumber (string): The tracking number of the shipment to retrieve and display data for.
@@ -52,7 +56,137 @@ const Order:React.FC<orderProps> = ({ trackingNumber }: { trackingNumber: string
     const [isCancelled, setIsCancelled] = useState<boolean>(false); 
     const [loading, setLoading] = useState<boolean>(true);
 
-    const steps = [
+  //   const steps = [
+  //   'تم إنشاء الشحنة',
+  //   'تم إستلام الشحنة من التاجر',
+  //   'الشحنة خرجت للتسليم',
+  //   'تم التسليم',
+  // ];
+
+  // const fetchOrderData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/${trackingNumber}`);
+  //     const data = response.data;
+  //     setOrderData(data);
+  //     if(data)
+  //     {
+  //       var temp = data.TrackingNumber;
+  //       if(temp == '7234258')
+  //       {
+  //         setCurrentStep(3); 
+  //         setIsCancelled(false);
+  //       }
+  //       else if(temp == '9442984')
+  //       {
+  //         setCurrentStep(2); 
+  //         setIsCancelled(true);
+  //       }
+  //       else if(temp == '1094442')
+  //       {
+  //         setIsCancelled(false);
+  //         setCurrentStep(2); 
+  //       }
+  //       else
+  //       {
+  //         setIsCancelled(false);
+  //         setCurrentStep(0); 
+  //       }
+  //     }
+      
+  //     setError(null); 
+  //   } catch (err) {
+  //     setError("لا يمكن العثور على أي سجل لرقم التتبع هذا في الوقت الحالي ، يرجى التحقق من الرقم والمحاولة مرة أخرى لاحقًا. لمزيد من المساعدة ، يرجى التواصل بخدمة العملاء.");
+  //     setOrderData(null);
+  //     setCurrentStep(0);
+  //   }
+  //   finally {
+  //     setLoading(false); 
+  //   }
+  // };
+
+
+  // useEffect(() => {
+  //   if (trackingNumber) {
+  //     fetchOrderData();
+  //   }
+  // }, [trackingNumber]);
+
+  //   const convertToArabicDate = (dateString: string) => {
+  //   const date = new Date(dateString);
+  //   const arabicMonths = [
+  //     "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+  //     "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+  //   ];
+  //   const arabicDays = [
+  //     "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
+  //   ];
+
+  //   const day = arabicDays[date.getUTCDay()];
+  //   const dayOfMonth = date.getUTCDate();
+  //   const month = arabicMonths[date.getUTCMonth()];
+  //   const year = date.getUTCFullYear();
+    
+  //   return `${day}, ${dayOfMonth} ${month} ${year}`;
+  // };
+
+  //  if (loading) {
+  //   return (
+  //     <div className="loader-container">
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
+
+  //  if (error) {
+  //   return (
+  //     <div className="shipment-tracker">
+  //       <strong>{error}</strong>
+  //     </div>
+  //   );
+  // }
+
+
+  // return (
+    
+  //   <div>
+  //       <div className="shipment-tracker">
+  //     <div className="header">
+  //       <div className="header-item">
+  //         <span>  رقم الشحنة {orderData ? orderData.TrackingNumber : 'N/A'}  </span>
+          
+  //         <strong
+  //         className={
+  //             isCancelled
+  //             ? 'cancelled-text'
+  //             : currentStep === steps.length - 1
+  //             ? 'success-text' 
+  //             : ''
+  //         }
+  //       >
+  //         {steps[currentStep]}
+  //       </strong>
+  //       </div>
+  //       <div className="header-item">
+  //         <span>آخر تحديث</span>
+  //         <strong className='switch'>  الاثنين 06/04/2020 at 5:33 pm</strong>
+  //       </div>
+  //       <div className="header-item">
+  //         <span>اسم التاجر</span>
+  //         <strong>{orderData ? orderData.provider : 'N/A'}</strong>
+  //       </div>
+  //       <div className="header-item">
+  //         <span>موعد التسليم خلال</span>
+  //         <strong>{orderData ? convertToArabicDate(orderData.PromisedDate) : "N/A"}</strong>
+  //       </div>
+  //     </div>
+  //     <Timeline currentStep={currentStep} isCancelled={isCancelled}/>
+  //     </div>
+  //     <ShipmentDetails orderData={orderData} isCancelled={isCancelled} currentStep={currentStep}/>
+      
+  //   </div>
+
+  const steps = [
     'تم إنشاء الشحنة',
     'تم إستلام الشحنة من التاجر',
     'الشحنة خرجت للتسليم',
@@ -62,53 +196,35 @@ const Order:React.FC<orderProps> = ({ trackingNumber }: { trackingNumber: string
   const fetchOrderData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://tracking.bosta.co/shipments/track/${trackingNumber}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/${trackingNumber}`);
       const data = response.data;
-      
-      console.log(response);
-      console.log(data);
       setOrderData(data);
-      if(data)
-      {
-        var temp = data.TrackingNumber;
-        if(temp == '7234258')
-        {
-          setCurrentStep(3); 
+      if (data) {
+        const temp = data.TrackingNumber;
+        if (temp === '7234258') {
+          setCurrentStep(3);
           setIsCancelled(false);
-          console.log(currentStep);
-        }
-        else if(temp == '9442984')
-        {
-          setCurrentStep(2); 
+        } else if (temp === '9442984') {
+          setCurrentStep(2);
           setIsCancelled(true);
-        }
-        else if(temp == '1094442')
-        {
+        } else if (temp === '1094442') {
           setIsCancelled(false);
-          setCurrentStep(2); 
-        }
-        else
-        {
+          setCurrentStep(2);
+        } else {
           setIsCancelled(false);
-          setCurrentStep(0); 
+          setCurrentStep(0);
         }
       }
-      
-      setError(null); 
+
+      setError(null);
     } catch (err) {
-      setError("لا يمكن العثور على أي سجل لرقم التتبع هذا في الوقت الحالي ، يرجى التحقق من الرقم والمحاولة مرة أخرى لاحقًا. لمزيد من المساعدة ، يرجى التواصل بخدمة العملاء.");
+      setError(STATIC_STRINGS.shipmentError);
       setOrderData(null);
       setCurrentStep(0);
-    }
-    finally {
-      setLoading(false); // End loading
+    } finally {
+      setLoading(false);
     }
   };
-
-
-  // useEffect(() => {
-  //     fetchOrderData();
-  //   }, []);
 
   useEffect(() => {
     if (trackingNumber) {
@@ -116,25 +232,25 @@ const Order:React.FC<orderProps> = ({ trackingNumber }: { trackingNumber: string
     }
   }, [trackingNumber]);
 
-    const convertToArabicDate = (dateString: string) => {
+  const convertToArabicDate = (dateString: string) => {
     const date = new Date(dateString);
     const arabicMonths = [
-      "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
-      "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+      'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+      'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
     ];
     const arabicDays = [
-      "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
+      'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'
     ];
 
     const day = arabicDays[date.getUTCDay()];
     const dayOfMonth = date.getUTCDate();
     const month = arabicMonths[date.getUTCMonth()];
     const year = date.getUTCFullYear();
-    
+
     return `${day}, ${dayOfMonth} ${month} ${year}`;
   };
 
-   if (loading) {
+  if (loading) {
     return (
       <div className="loader-container">
         <Loader />
@@ -142,7 +258,7 @@ const Order:React.FC<orderProps> = ({ trackingNumber }: { trackingNumber: string
     );
   }
 
-   if (error) {
+  if (error) {
     return (
       <div className="shipment-tracker">
         <strong>{error}</strong>
@@ -150,44 +266,40 @@ const Order:React.FC<orderProps> = ({ trackingNumber }: { trackingNumber: string
     );
   }
 
-
   return (
-    
     <div>
-        <div className="shipment-tracker">
-      <div className="header">
-        <div className="header-item">
-          <span>  رقم الشحنة {orderData ? orderData.TrackingNumber : 'N/A'}  </span>
-          
-          <strong
-          className={
-              isCancelled
-              ? 'cancelled-text'
-              : currentStep === steps.length - 1
-              ? 'success-text' 
-              : ''
-          }
-        >
-          {steps[currentStep]}
-        </strong>
+      <div className="shipment-tracker">
+        <div className="header">
+          <div className="header-item">
+            <span>{STATIC_STRINGS.shipmentNumber} {orderData ? orderData.TrackingNumber : 'N/A'}</span>
+            <strong
+              className={
+                isCancelled
+                  ? 'cancelled-text'
+                  : currentStep === steps.length - 1
+                  ? 'success-text'
+                  : ''
+              }
+            >
+              {steps[currentStep]}
+            </strong>
+          </div>
+          <div className="header-item">
+            <span>{STATIC_STRINGS.lastUpdated}</span>
+            <strong className="switch">{STATIC_STRINGS.mondayDate}</strong>
+          </div>
+          <div className="header-item">
+            <span>{STATIC_STRINGS.provider}</span>
+            <strong>{orderData ? orderData.provider : 'N/A'}</strong>
+          </div>
+          <div className="header-item">
+            <span>{STATIC_STRINGS.promisedDate}</span>
+            <strong>{orderData ? convertToArabicDate(orderData.PromisedDate) : 'N/A'}</strong>
+          </div>
         </div>
-        <div className="header-item">
-          <span>آخر تحديث</span>
-          <strong className='switch'>  الاثنين 06/04/2020 at 5:33 pm</strong>
-        </div>
-        <div className="header-item">
-          <span>اسم التاجر</span>
-          <strong>{orderData ? orderData.provider : 'N/A'}</strong>
-        </div>
-        <div className="header-item">
-          <span>موعد التسليم خلال</span>
-          <strong>{orderData ? convertToArabicDate(orderData.PromisedDate) : "N/A"}</strong>
-        </div>
+        <Timeline currentStep={currentStep} isCancelled={isCancelled} />
       </div>
-      <Timeline currentStep={currentStep} isCancelled={isCancelled}/>
-      </div>
-      <ShipmentDetails orderData={orderData} isCancelled={isCancelled} currentStep={currentStep}/>
-      
+      <ShipmentDetails orderData={orderData} isCancelled={isCancelled} currentStep={currentStep} />
     </div>
   )
 }
