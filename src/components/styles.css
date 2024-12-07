@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Neucha&display=swap');
+
+.bosta__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    direction: rtl;
+    border: 1px solid #ded9d9;
+}
+
+
+.bosta__header .bosta__logo {
+    display: flex;
+    align-items: center;
+    /* Align image and text vertically */
+    /* font-family: 'Cairo', sans-serif; */
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+.bosta__header .bosta__logo--image {
+    width: 40px;
+    /* Adjust size as needed */
+    height: 40px;
+    margin-left: 10px;
+    /* Space between the image and text */
+}
+
+
+.bosta__header .bosta__header--link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.bosta__nav--center {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    gap: 40px;
+}
+
+.bosta__nav--left {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+

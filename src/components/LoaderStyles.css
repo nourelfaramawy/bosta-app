@@ -1,0 +1,33 @@
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+}
+
+.loader{
+    display: flex;
+    gap: 10px;
+}
+
+.loader .dot{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: bounce .5s infinite alternate;
+}
+
+.loader .dot:nth-child(2){
+    animation-delay: 100ms;
+}
+
+@keyframes bounce {
+    100%{
+        translate: 0 -10px;
+    }
+    
+}
